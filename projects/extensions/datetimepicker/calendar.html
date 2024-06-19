@@ -101,6 +101,24 @@
         [selected]="selected!"
         [type]="type">
       </mtx-month-view>
+      @if(timeInput === "input") {
+        <mtx-time
+          (_userSelection)="_userSelected()"
+          (activeDateChange)="_onActiveDateChange($event)"
+          (selectedChange)="_timeSelected($event)"
+          [timeInput]="timeInput"
+          [AMPM]="_AMPM"
+          (ampmChange)="_ampmClicked($event)"
+          [clockView]="_clockView"
+          (clockViewChange)="_clockView = $event"
+          [twelvehour]="twelvehour"
+          [dateFilter]="dateFilter"
+          [interval]="timeInterval"
+          [maxDate]="maxDate"
+          [minDate]="minDate"
+          [selected]="_activeDate">
+        </mtx-time>
+      }
     }
     @case ('year') {
       <mtx-year-view
@@ -125,7 +143,7 @@
       </mtx-multi-year-view>
     }
     @default {
-      @if (timeInput) {
+      @if (timeInput === "both") {
         <mtx-time
           (_userSelection)="_userSelected()"
           (activeDateChange)="_onActiveDateChange($event)"
@@ -135,6 +153,7 @@
           [clockView]="_clockView"
           (clockViewChange)="_clockView = $event"
           [twelvehour]="twelvehour"
+          [timeInput]="timeInput"
           [dateFilter]="dateFilter"
           [interval]="timeInterval"
           [maxDate]="maxDate"

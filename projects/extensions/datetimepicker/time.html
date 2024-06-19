@@ -44,17 +44,19 @@
   </div>
 </div>
 
-<mtx-clock (selectedChange)="_timeSelected($event)"
-  (activeDateChange)="_onActiveDateChange($event)"
-  [AMPM]="AMPM"
-  [dateFilter]="dateFilter"
-  [interval]="interval"
-  [maxDate]="maxDate"
-  [minDate]="minDate"
-  [selected]="selected"
-  [startView]="clockView"
-  [twelvehour]="twelvehour">
-</mtx-clock>
+@if (timeInput !== 'input') {
+  <mtx-clock (selectedChange)="_timeSelected($event)"
+    (activeDateChange)="_onActiveDateChange($event)"
+    [AMPM]="AMPM"
+    [dateFilter]="dateFilter"
+    [interval]="interval"
+    [maxDate]="maxDate"
+    [minDate]="minDate"
+    [selected]="selected"
+    [startView]="clockView"
+    [twelvehour]="twelvehour">
+  </mtx-clock>
+}
 
 <div class="mtx-time-button-wrapper">
   <button class="mtx-time-cancel-button" mat-button type="button" (click)="handleCancel()">

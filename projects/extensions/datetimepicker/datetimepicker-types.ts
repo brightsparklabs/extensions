@@ -6,3 +6,6 @@ export type MtxCalendarView = 'clock' | 'month' | 'year' | 'multi-year';
 
 /** Possible types for AM / PM */
 export type MtxAMPM = 'AM' | 'PM';
+
+/** Possible views for datatimepicker time. */
+export type MtxTimeView = 'input' | 'dial' | 'both';

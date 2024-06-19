@@ -132,6 +132,7 @@ export class DatetimepickerDemoComponent implements OnInit, OnDestroy {
       mintest: [this.today, Validators.required],
       filtertest: [this.today, Validators.required],
       touch: [null, Validators.required],
+      hiddenClock: [null, Validators.required],
     });
   }
 

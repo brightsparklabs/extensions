@@ -24,7 +24,7 @@ import { DatetimeAdapter } from '@ng-matero/extensions/core';
 import { MtxClock, MtxClockView } from './clock';
 import { MtxDatetimepickerFilterType } from './datetimepicker-filtertype';
 import { MtxDatetimepickerIntl } from './datetimepicker-intl';
-import { MtxAMPM } from './datetimepicker-types';
+import { MtxAMPM, MtxTimeView } from './datetimepicker-types';
 
 function pad(num: NumberInput, size: number) {
   num = String(num);
@@ -275,6 +275,8 @@ export class MtxTime<D> implements OnChanges, AfterViewInit, OnDestroy {
 
   /** Whether the time is now in AM or PM. */
   @Input() AMPM: MtxAMPM = 'AM';
+
+  @Input() timeInput: MtxTimeView = 'dial';
 
   /**
    * The date to display in this clock view.

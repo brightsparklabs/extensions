@@ -9,7 +9,9 @@ $non-touch-calendar-portrait-height: 424px;
 $non-touch-calendar-landscape-width: 432px;
 $non-touch-calendar-landscape-height: 328px;
 $non-touch-calendar-with-time-input-portrait-height: 490px;
+$non-touch-calendar-with-time-input-only-portrait-height: 526px;
 $non-touch-calendar-with-time-input-landscape-height: 404px;
+$non-touch-calendar-with-time-input-only-landscape-height: 440px;
 
 // Ideally the calendar would have a constant aspect ratio, no matter its size, and we would base
 // these measurements off the aspect ratio. Unfortunately, the aspect ratio does change a little as
@@ -38,14 +40,20 @@ $touch-max-height: 850px;
     &.mtx-calendar-with-time-input {
       height: $non-touch-calendar-with-time-input-landscape-height;
     }
+
+    &.mtx-calendar-with-time-input-only {
+      height: $non-touch-calendar-with-time-input-only-landscape-height;
+    }
   }
 }
 
 .mtx-datetimepicker-content {
   display: block;
 
-  @include token-utils.use-tokens(tokens-mtx-datetimepicker.$prefix,
-    tokens-mtx-datetimepicker.get-token-slots()) {
+  @include token-utils.use-tokens(
+    tokens-mtx-datetimepicker.$prefix,
+    tokens-mtx-datetimepicker.get-token-slots()
+  ) {
     @include token-utils.create-token-slot(border-radius, container-shape);
     @include token-utils.create-token-slot(background-color, container-background-color);
     @include token-utils.create-token-slot(box-shadow, container-elevation-shadow);
@@ -68,6 +76,10 @@ $touch-max-height: 850px;
   &.mtx-calendar-with-time-input {
     height: $non-touch-calendar-with-time-input-portrait-height;
   }
+
+  &.mtx-calendar-with-time-input-only {
+    height: $non-touch-calendar-with-time-input-only-portrait-height;
+  }
 }
 
 .mtx-datetimepicker-content[mode='landscape'] {
@@ -84,8 +96,10 @@ $touch-max-height: 850px;
   display: block;
   max-height: 80vh;
 
-  @include token-utils.use-tokens(tokens-mtx-datetimepicker.$prefix,
-    tokens-mtx-datetimepicker.get-token-slots()) {
+  @include token-utils.use-tokens(
+    tokens-mtx-datetimepicker.$prefix,
+    tokens-mtx-datetimepicker.get-token-slots()
+  ) {
     @include token-utils.create-token-slot(box-shadow, container-touch-elevation-shadow);
     @include token-utils.create-token-slot(border-radius, container-touch-shape);
   }

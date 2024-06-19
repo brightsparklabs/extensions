@@ -43,7 +43,12 @@ import { mtxDatetimepickerAnimations } from './datetimepicker-animations';
 import { createMissingDateImplError } from './datetimepicker-errors';
 import { MtxDatetimepickerFilterType } from './datetimepicker-filtertype';
 import { MtxDatetimepickerIntl } from './datetimepicker-intl';
-import { MtxAMPM, MtxCalendarView, MtxDatetimepickerType } from './datetimepicker-types';
+import {
+  MtxAMPM,
+  MtxCalendarView,
+  MtxDatetimepickerType,
+  MtxTimeView,
+} from './datetimepicker-types';
 import { MtxMonthView } from './month-view';
 import {
   MtxMultiYearView,
@@ -65,7 +70,8 @@ import { MtxYearView } from './year-view';
   styleUrl: 'calendar.scss',
   host: {
     'class': 'mtx-calendar',
-    '[class.mtx-calendar-with-time-input]': 'timeInput',
+    '[class.mtx-calendar-with-time-input]': 'timeInput === "both"',
+    '[class.mtx-calendar-with-time-input-only]': 'timeInput === "input"',
     'tabindex': '0',
     '(keydown)': '_handleCalendarBodyKeydown($event)',
   },
@@ -176,7 +182,7 @@ export class MtxCalendar<D> implements AfterContentInit, OnDestroy {
    * Whether the calendar is in time mode. In time mode the calendar clock gets time input elements
    * rather then just clock. When touchUi is enabled this will be disabled
    */
-  @Input({ transform: booleanAttribute }) timeInput = false;
+  @Input() timeInput: MtxTimeView = 'dial';
 
   /** The currently selected date. */
   @Input()
@@ -366,7 +372,7 @@ export class MtxCalendar<D> implements AfterContentInit, OnDestroy {
     } else if (this.type === 'month') {
       this.currentView = 'year';
     } else if (this.type === 'time') {
-      this.currentView = 'clock';
+      this.currentView = this.timeInput === 'input' ? 'month' : 'clock';
     } else {
       this.currentView = this.startView || 'month';
     }
@@ -384,7 +390,7 @@ export class MtxCalendar<D> implements AfterContentInit, OnDestroy {
       }
     } else {
       this._activeDate = date;
-      this.currentView = 'clock';
+      this.currentView = this.timeInput === 'input' ? 'month' : 'clock';
     }
   }
 
@@ -469,7 +475,7 @@ export class MtxCalendar<D> implements AfterContentInit, OnDestroy {
   }
 
   _ampmClicked(source: MtxAMPM): void {
-    this._currentView = 'clock';
+    this._currentView = this.timeInput === 'input' ? 'month' : 'clock';
 
     if (source === this._AMPM) {
       return;
@@ -521,12 +527,12 @@ export class MtxCalendar<D> implements AfterContentInit, OnDestroy {
   }
 
   _hoursClicked(): void {
-    this.currentView = 'clock';
+    this.currentView = this.timeInput === 'input' ? 'month' : 'clock';
     this._clockView = 'hour';
   }
 
   _minutesClicked(): void {
-    this.currentView = 'clock';
+    this.currentView = this.timeInput === 'input' ? 'month' : 'clock';
     this._clockView = 'minute';
   }
 
@@ -777,7 +783,8 @@ export class MtxCalendar<D> implements AfterContentInit, OnDestroy {
             : this._adapter.addCalendarMinutes(this._activeDate, -this.timeInterval);
         break;
       case ENTER:
-        if (!this.timeInput) {
+        // TODO: Validate what this line does.
+        if (this.timeInput !== 'dial') {
           this._dialTimeSelected(this._activeDate);
         }
         return;

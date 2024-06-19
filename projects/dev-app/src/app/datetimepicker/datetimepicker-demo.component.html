@@ -26,7 +26,7 @@
     <mat-label>DateTime with manual input</mat-label>
     <mtx-datetimepicker-toggle [for]="datetimePickerManual" matSuffix></mtx-datetimepicker-toggle>
     <mtx-datetimepicker #datetimePickerManual startView="month" [timeInterval]="5"
-    [timeInput]="true"></mtx-datetimepicker>
+    [timeInput]="'both'"></mtx-datetimepicker>
     <input [mtxDatetimepicker]="datetimePickerManual" [max]="tomorrow" [min]="today"
       autocomplete="false" formControlName="dateTimeManual" matInput required>
     @if (group.get('dateTimeManual')?.errors?.required) {
@@ -83,7 +83,7 @@
     <mat-label>DateTime AM/PM with manual input</mat-label>
     <mtx-datetimepicker-toggle [for]="timeAMPMPickerManual" matSuffix></mtx-datetimepicker-toggle>
     <mtx-datetimepicker #timeAMPMPickerManual startView="month" [timeInterval]="5"
-    [timeInput]="true" [twelvehour]="true"></mtx-datetimepicker>
+    [timeInput]="'both'" [twelvehour]="true"></mtx-datetimepicker>
     <input [mtxDatetimepicker]="timeAMPMPickerManual" [max]="tomorrow" [min]="today"
       autocomplete="false" formControlName="timeAMPMManual" matInput required>
     @if (group.get('timeAMPMManual')?.errors?.required) {
@@ -166,6 +166,17 @@
     <mtx-datetimepicker #touch mode="portrait" [timeInterval]="5" [touchUi]="true">
     </mtx-datetimepicker>
     @if (group.get('touch')?.errors?.required) {
+      <mat-error>required</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field [color]="themeColor">
+    <mat-label>Hidden clock</mat-label>
+    <input [mtxDatetimepicker]="hiddenClock" [min]="min" formControlName="hiddenClock" matInput required>
+    <mtx-datetimepicker-toggle [for]="hiddenClock" matSuffix></mtx-datetimepicker-toggle>
+    <mtx-datetimepicker #hiddenClock mode="auto" timeInput="input" >
+    </mtx-datetimepicker>
+    @if (group.get('timeInput')?.errors?.required) {
       <mat-error>required</mat-error>
     }
   </mat-form-field>

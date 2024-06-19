@@ -43,7 +43,7 @@ import { mtxDatetimepickerAnimations } from './datetimepicker-animations';
 import { createMissingDateImplError } from './datetimepicker-errors';
 import { MtxDatetimepickerFilterType } from './datetimepicker-filtertype';
 import { MtxDatetimepickerInput } from './datetimepicker-input';
-import { MtxCalendarView, MtxDatetimepickerType } from './datetimepicker-types';
+import { MtxCalendarView, MtxDatetimepickerType, MtxTimeView } from './datetimepicker-types';
 
 /** Used to generate a unique ID for each datetimepicker instance. */
 let datetimepickerUid = 0;
@@ -299,7 +299,7 @@ export class MtxDatetimepicker<D> implements OnDestroy {
    * Whether the calendar is in time mode. In time mode the calendar clock gets time input
    * elements rather then just clock. When `touchUi` is enabled this will be disabled.
    */
-  @Input({ transform: booleanAttribute }) timeInput = false;
+  @Input() timeInput: MtxTimeView = 'dial';
 
   /** Whether the datetimepicker pop-up should be disabled. */
   @Input({ transform: booleanAttribute })
