@@ -174,7 +174,7 @@
     <mat-label>Hidden clock</mat-label>
     <input [mtxDatetimepicker]="hiddenClock" [min]="min" formControlName="hiddenClock" matInput required>
     <mtx-datetimepicker-toggle [for]="hiddenClock" matSuffix></mtx-datetimepicker-toggle>
-    <mtx-datetimepicker #hiddenClock mode="auto" timeInput="input" >
+    <mtx-datetimepicker #hiddenClock mode="auto" timeInput="input" type="datetime" >
     </mtx-datetimepicker>
     @if (group.get('timeInput')?.errors?.required) {
       <mat-error>required</mat-error>

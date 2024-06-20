@@ -71,7 +71,7 @@ import { MtxYearView } from './year-view';
   host: {
     'class': 'mtx-calendar',
     '[class.mtx-calendar-with-time-input]': 'timeInput === "both"',
-    '[class.mtx-calendar-with-time-input-only]': 'timeInput === "input"',
+    '[class.mtx-calendar-with-time-input-only]': 'timeInput === "input" && type.endsWith("time")',
     'tabindex': '0',
     '(keydown)': '_handleCalendarBodyKeydown($event)',
   },
