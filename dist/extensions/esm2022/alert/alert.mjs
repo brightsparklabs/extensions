@@ -1,0 +1,45 @@
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output, ViewEncapsulation, booleanAttribute, } from '@angular/core';
+import * as i0 from "@angular/core";
+export class MtxAlert {
+    get _hostClassList() {
+        return `mtx-alert-${this.type} mat-elevation-z${this.elevation}`;
+    }
+    constructor(_changeDetectorRef) {
+        this._changeDetectorRef = _changeDetectorRef;
+        /** The alert's type. Can be `default`, `info`, `success`, `warning` or `danger`. */
+        this.type = 'default';
+        /** Whether to display an inline close button. */
+        this.dismissible = false;
+        /** The alert's elevation (0~24). */
+        this.elevation = 0;
+        /** Event emitted when the alert closed. */
+        this.closed = new EventEmitter();
+    }
+    _onClosed() {
+        this._changeDetectorRef.markForCheck();
+        this.closed.emit(this);
+    }
+    /** @nocollapse */ static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: MtxAlert, deps: [{ token: i0.ChangeDetectorRef }], target: i0.ɵɵFactoryTarget.Component }); }
+    /** @nocollapse */ static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "17.0.0", version: "18.0.1", type: MtxAlert, isStandalone: true, selector: "mtx-alert", inputs: { type: "type", dismissible: ["dismissible", "dismissible", booleanAttribute], elevation: "elevation" }, outputs: { closed: "closed" }, host: { attributes: { "role": "alert" }, properties: { "class.mtx-alert-dismissible": "dismissible", "class": "this._hostClassList" }, classAttribute: "mtx-alert" }, exportAs: ["mtxAlert"], ngImport: i0, template: "<ng-content></ng-content>\n@if (dismissible) {\n  <button type=\"button\" class=\"mtx-alert-close\" aria-label=\"Close\" (click)=\"_onClosed()\">\n    <span aria-hidden=\"true\">&times;</span>\n  </button>\n}\n", styles: [".mtx-alert{position:relative;display:block;padding:12px 20px;margin-bottom:16px;border:1px solid var(--mtx-alert-outline-color);border-radius:var(--mtx-alert-container-shape);background-color:var(--mtx-alert-background-color);color:var(--mtx-alert-text-color)}.mtx-alert.mtx-alert-info{background-color:var(--mtx-alert-info-background-color);color:var(--mtx-alert-info-text-color)}.mtx-alert.mtx-alert-success{background-color:var(--mtx-alert-success-background-color);color:var(--mtx-alert-success-text-color)}.mtx-alert.mtx-alert-warning{background-color:var(--mtx-alert-warning-background-color);color:var(--mtx-alert-warning-text-color)}.mtx-alert.mtx-alert-danger{background-color:var(--mtx-alert-danger-background-color);color:var(--mtx-alert-danger-text-color)}.mtx-alert-close{position:absolute;top:0;bottom:0;right:0;padding:0 1.25rem;font-size:1.5rem;line-height:1;color:inherit;opacity:.5;background-color:transparent;border:0;cursor:pointer}[dir=rtl] .mtx-alert-close{right:auto;left:0}.mtx-alert-close:hover{opacity:.75}.mtx-alert-dismissible{padding-right:4rem}\n"], changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None }); }
+}
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: MtxAlert, decorators: [{
+            type: Component,
+            args: [{ selector: 'mtx-alert', exportAs: 'mtxAlert', host: {
+                        'class': 'mtx-alert',
+                        '[class.mtx-alert-dismissible]': 'dismissible',
+                        'role': 'alert',
+                    }, encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush, standalone: true, template: "<ng-content></ng-content>\n@if (dismissible) {\n  <button type=\"button\" class=\"mtx-alert-close\" aria-label=\"Close\" (click)=\"_onClosed()\">\n    <span aria-hidden=\"true\">&times;</span>\n  </button>\n}\n", styles: [".mtx-alert{position:relative;display:block;padding:12px 20px;margin-bottom:16px;border:1px solid var(--mtx-alert-outline-color);border-radius:var(--mtx-alert-container-shape);background-color:var(--mtx-alert-background-color);color:var(--mtx-alert-text-color)}.mtx-alert.mtx-alert-info{background-color:var(--mtx-alert-info-background-color);color:var(--mtx-alert-info-text-color)}.mtx-alert.mtx-alert-success{background-color:var(--mtx-alert-success-background-color);color:var(--mtx-alert-success-text-color)}.mtx-alert.mtx-alert-warning{background-color:var(--mtx-alert-warning-background-color);color:var(--mtx-alert-warning-text-color)}.mtx-alert.mtx-alert-danger{background-color:var(--mtx-alert-danger-background-color);color:var(--mtx-alert-danger-text-color)}.mtx-alert-close{position:absolute;top:0;bottom:0;right:0;padding:0 1.25rem;font-size:1.5rem;line-height:1;color:inherit;opacity:.5;background-color:transparent;border:0;cursor:pointer}[dir=rtl] .mtx-alert-close{right:auto;left:0}.mtx-alert-close:hover{opacity:.75}.mtx-alert-dismissible{padding-right:4rem}\n"] }]
+        }], ctorParameters: () => [{ type: i0.ChangeDetectorRef }], propDecorators: { _hostClassList: [{
+                type: HostBinding,
+                args: ['class']
+            }], type: [{
+                type: Input
+            }], dismissible: [{
+                type: Input,
+                args: [{ transform: booleanAttribute }]
+            }], elevation: [{
+                type: Input
+            }], closed: [{
+                type: Output
+            }] } });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWxlcnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi9wcm9qZWN0cy9leHRlbnNpb25zL2FsZXJ0L2FsZXJ0LnRzIiwiLi4vLi4vLi4vLi4vcHJvamVjdHMvZXh0ZW5zaW9ucy9hbGVydC9hbGVydC5odG1sIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFDTCx1QkFBdUIsRUFFdkIsU0FBUyxFQUNULFlBQVksRUFDWixXQUFXLEVBQ1gsS0FBSyxFQUNMLE1BQU0sRUFDTixpQkFBaUIsRUFDakIsZ0JBQWdCLEdBQ2pCLE1BQU0sZUFBZSxDQUFDOztBQWtCdkIsTUFBTSxPQUFPLFFBQVE7SUFDbkIsSUFDSSxjQUFjO1FBQ2hCLE9BQU8sYUFBYSxJQUFJLENBQUMsSUFBSSxtQkFBbUIsSUFBSSxDQUFDLFNBQVMsRUFBRSxDQUFDO0lBQ25FLENBQUM7SUFjRCxZQUFvQixrQkFBcUM7UUFBckMsdUJBQWtCLEdBQWxCLGtCQUFrQixDQUFtQjtRQVp6RCxvRkFBb0Y7UUFDM0UsU0FBSSxHQUFpQixTQUFTLENBQUM7UUFFeEMsaURBQWlEO1FBQ1QsZ0JBQVcsR0FBRyxLQUFLLENBQUM7UUFFNUQsb0NBQW9DO1FBQzNCLGNBQVMsR0FBRyxDQUFDLENBQUM7UUFFdkIsMkNBQTJDO1FBQ2pDLFdBQU0sR0FBRyxJQUFJLFlBQVksRUFBWSxDQUFDO0lBRVksQ0FBQztJQUU3RCxTQUFTO1FBQ1AsSUFBSSxDQUFDLGtCQUFrQixDQUFDLFlBQVksRUFBRSxDQUFDO1FBQ3ZDLElBQUksQ0FBQyxNQUFNLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxDQUFDO0lBQ3pCLENBQUM7aUlBdkJVLFFBQVE7cUhBQVIsUUFBUSxpSEFVQyxnQkFBZ0Isa1JDdEN0QyxvTkFNQTs7MkZEc0JhLFFBQVE7a0JBZHBCLFNBQVM7K0JBQ0UsV0FBVyxZQUNYLFVBQVUsUUFDZDt3QkFDSixPQUFPLEVBQUUsV0FBVzt3QkFDcEIsK0JBQStCLEVBQUUsYUFBYTt3QkFDOUMsTUFBTSxFQUFFLE9BQU87cUJBQ2hCLGlCQUdjLGlCQUFpQixDQUFDLElBQUksbUJBQ3BCLHVCQUF1QixDQUFDLE1BQU0sY0FDbkMsSUFBSTtzRkFJWixjQUFjO3NCQURqQixXQUFXO3VCQUFDLE9BQU87Z0JBTVgsSUFBSTtzQkFBWixLQUFLO2dCQUdrQyxXQUFXO3NCQUFsRCxLQUFLO3VCQUFDLEVBQUUsU0FBUyxFQUFFLGdCQUFnQixFQUFFO2dCQUc3QixTQUFTO3NCQUFqQixLQUFLO2dCQUdJLE1BQU07c0JBQWYsTUFBTSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7XG4gIENoYW5nZURldGVjdGlvblN0cmF0ZWd5LFxuICBDaGFuZ2VEZXRlY3RvclJlZixcbiAgQ29tcG9uZW50LFxuICBFdmVudEVtaXR0ZXIsXG4gIEhvc3RCaW5kaW5nLFxuICBJbnB1dCxcbiAgT3V0cHV0LFxuICBWaWV3RW5jYXBzdWxhdGlvbixcbiAgYm9vbGVhbkF0dHJpYnV0ZSxcbn0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5cbmV4cG9ydCB0eXBlIE10eEFsZXJ0VHlwZSA9ICdkZWZhdWx0JyB8ICdpbmZvJyB8ICdzdWNjZXNzJyB8ICd3YXJuaW5nJyB8ICdkYW5nZXInO1xuXG5AQ29tcG9uZW50KHtcbiAgc2VsZWN0b3I6ICdtdHgtYWxlcnQnLFxuICBleHBvcnRBczogJ210eEFsZXJ0JyxcbiAgaG9zdDoge1xuICAgICdjbGFzcyc6ICdtdHgtYWxlcnQnLFxuICAgICdbY2xhc3MubXR4LWFsZXJ0LWRpc21pc3NpYmxlXSc6ICdkaXNtaXNzaWJsZScsXG4gICAgJ3JvbGUnOiAnYWxlcnQnLFxuICB9LFxuICB0ZW1wbGF0ZVVybDogJy4vYWxlcnQuaHRtbCcsXG4gIHN0eWxlVXJsOiAnLi9hbGVydC5zY3NzJyxcbiAgZW5jYXBzdWxhdGlvbjogVmlld0VuY2Fwc3VsYXRpb24uTm9uZSxcbiAgY2hhbmdlRGV0ZWN0aW9uOiBDaGFuZ2VEZXRlY3Rpb25TdHJhdGVneS5PblB1c2gsXG4gIHN0YW5kYWxvbmU6IHRydWUsXG59KVxuZXhwb3J0IGNsYXNzIE10eEFsZXJ0IHtcbiAgQEhvc3RCaW5kaW5nKCdjbGFzcycpXG4gIGdldCBfaG9zdENsYXNzTGlzdCgpIHtcbiAgICByZXR1cm4gYG10eC1hbGVydC0ke3RoaXMudHlwZX0gbWF0LWVsZXZhdGlvbi16JHt0aGlzLmVsZXZhdGlvbn1gO1xuICB9XG5cbiAgLyoqIFRoZSBhbGVydCdzIHR5cGUuIENhbiBiZSBgZGVmYXVsdGAsIGBpbmZvYCwgYHN1Y2Nlc3NgLCBgd2FybmluZ2Agb3IgYGRhbmdlcmAuICovXG4gIEBJbnB1dCgpIHR5cGU6IE10eEFsZXJ0VHlwZSA9ICdkZWZhdWx0JztcblxuICAvKiogV2hldGhlciB0byBkaXNwbGF5IGFuIGlubGluZSBjbG9zZSBidXR0b24uICovXG4gIEBJbnB1dCh7IHRyYW5zZm9ybTogYm9vbGVhbkF0dHJpYnV0ZSB9KSBkaXNtaXNzaWJsZSA9IGZhbHNlO1xuXG4gIC8qKiBUaGUgYWxlcnQncyBlbGV2YXRpb24gKDB+MjQpLiAqL1xuICBASW5wdXQoKSBlbGV2YXRpb24gPSAwO1xuXG4gIC8qKiBFdmVudCBlbWl0dGVkIHdoZW4gdGhlIGFsZXJ0IGNsb3NlZC4gKi9cbiAgQE91dHB1dCgpIGNsb3NlZCA9IG5ldyBFdmVudEVtaXR0ZXI8TXR4QWxlcnQ+KCk7XG5cbiAgY29uc3RydWN0b3IocHJpdmF0ZSBfY2hhbmdlRGV0ZWN0b3JSZWY6IENoYW5nZURldGVjdG9yUmVmKSB7fVxuXG4gIF9vbkNsb3NlZCgpOiB2b2lkIHtcbiAgICB0aGlzLl9jaGFuZ2VEZXRlY3RvclJlZi5tYXJrRm9yQ2hlY2soKTtcbiAgICB0aGlzLmNsb3NlZC5lbWl0KHRoaXMpO1xuICB9XG59XG4iLCI8bmctY29udGVudD48L25nLWNvbnRlbnQ+XG5AaWYgKGRpc21pc3NpYmxlKSB7XG4gIDxidXR0b24gdHlwZT1cImJ1dHRvblwiIGNsYXNzPVwibXR4LWFsZXJ0LWNsb3NlXCIgYXJpYS1sYWJlbD1cIkNsb3NlXCIgKGNsaWNrKT1cIl9vbkNsb3NlZCgpXCI+XG4gICAgPHNwYW4gYXJpYS1oaWRkZW49XCJ0cnVlXCI+JnRpbWVzOzwvc3Bhbj5cbiAgPC9idXR0b24+XG59XG4iXX0=
