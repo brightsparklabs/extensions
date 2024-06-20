@@ -204,7 +204,15 @@ $_tokens: tokens-mtx-datetimepicker.$prefix, tokens-mtx-datetimepicker.get-token
   outline: none;
   box-sizing: border-box;
   overflow: hidden;
+  position: relative;
 }
+
+@media all and (orientation: portrait) {
+  .mtx-calendar-inline-input-content {
+    height: 447px;
+  }
+}
+
 
 .mtx-calendar-controls {
   display: flex;

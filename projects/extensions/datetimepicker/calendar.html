@@ -58,7 +58,7 @@
   }
 </div>
 
-<div class="mtx-calendar-content">
+<div class="mtx-calendar-content" [class.mtx-calendar-inline-input-content]="timeInput === 'input'">
   @if (currentView === 'month' || currentView === 'year' || currentView === 'multi-year') {
     <div class="mtx-month-content">
       <div class="mtx-calendar-controls">
@@ -103,6 +103,7 @@
       </mtx-month-view>
       @if(timeInput === "input") {
         <mtx-time
+          style="position: absolute; bottom: 8px; right: 8px; width: 100%"
           (_userSelection)="_userSelected()"
           (activeDateChange)="_onActiveDateChange($event)"
           (selectedChange)="_timeSelected($event)"
