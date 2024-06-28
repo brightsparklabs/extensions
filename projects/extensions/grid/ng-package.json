@@ -1,6 +1,0 @@
-{
-  "lib": {
-    "flatModuleFile": "mtxGrid",
-    "entryFile": "public-api.ts"
-  }
-}

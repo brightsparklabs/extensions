@@ -1,7 +1,0 @@
-<mat-radio-group [(ngModel)]="defaultlang" (change)="translate.use($event.value)">
-  @for (lang of langs; track lang) {
-    <mat-radio-button [value]="lang.value">{{lang.label}}</mat-radio-button>
-  }
-</mat-radio-group>
-
-<button mat-raised-button color="primary" (click)="open()">Open Dialog</button>

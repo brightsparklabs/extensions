@@ -1,106 +1,182 @@
 {
-  "name": "extensions-srcs",
-  "version": "0.0.0-NOT-USED",
-  "engines": {
-    "yarn": ">=1.22.0 <2",
-    "npm": "Please use Yarn instead of NPM to install dependencies"
+  "name": "@ng-matero/extensions",
+  "version": "18.0.1",
+  "description": "Angular Material Extensions",
+  "publishConfig": {
+    "access": "public"
   },
-  "scripts": {
-    "ng": "ng",
-    "start": "npm run serve:dev-app",
-    "build": "npm run build:dev-app",
-    "test": "ng test",
-    "test:lib:ci": "ng test extensions --browsers=ChromeHeadless --watch=false --code-coverage",
-    "e2e": "ng e2e",
-    "lint": "npm run lint:ts && npm run lint:scss",
-    "lint:ts": "eslint \"projects/**/*.ts\" --fix",
-    "lint:scss": "stylelint \"projects/**/*.scss\" --fix",
-    "serve:dev-app": "ng serve dev-app",
-    "build:dev-app": "ng build dev-app",
-    "serve:docs": "ng serve docs",
-    "build:docs": "ng build docs --base-href=/extensions/",
-    "predeploy": "npm run build:docs",
-    "deploy": "angular-cli-ghpages --no-silent --dir=dist/docs",
-    "build:themes": "sass projects/extensions/core/theming/prebuilt:dist/extensions/prebuilt-themes --load-path=node_modules --style=compressed --no-source-map",
-    "build:lib": "ng build extensions --configuration production && npm run build:themes",
-    "postbuild:lib": "cp README.md dist/extensions",
-    "build:moment-adapter": "ng build extensions-moment-adapter --configuration production",
-    "build:luxon-adapter": "ng build extensions-luxon-adapter --configuration production",
-    "build:date-fns-adapter": "ng build extensions-date-fns-adapter --configuration production",
-    "publish": "npm run build:lib && cd dist/extensions && npm publish",
-    "publish:moment-adapter": "npm run build:moment-adapter && cd dist/extensions-moment-adapter && npm publish",
-    "publish:luxon-adapter": "npm run build:luxon-adapter && cd dist/extensions-luxon-adapter && npm publish",
-    "publish:date-fns-adapter": "npm run build:date-fns-adapter && cd dist/extensions-date-fns-adapter && npm publish",
-    "prepare": "husky install"
+  "author": "nzbin<nzb329@163.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ng-matero/extensions.git"
   },
-  "private": true,
+  "keywords": [
+    "angular",
+    "angular-material",
+    "angular-components",
+    "angular-material-extensions",
+    "ng-matero",
+    "data-grid",
+    "ngx-data-grid",
+    "material-data-table",
+    "color-picker",
+    "ngx-color",
+    "ngx-color-picker",
+    "ng-select",
+    "typeahead",
+    "autocomplete",
+    "checkbox-group",
+    "popover",
+    "datetimepicker"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ng-matero/extensions/issues"
+  },
+  "homepage": "https://ng-matero.github.io/extensions/",
+  "exports": {
+    ".": {
+      "sass": "./_index.scss",
+      "types": "./index.d.ts",
+      "esm2022": "./esm2022/ng-matero-extensions.mjs",
+      "esm": "./esm2022/ng-matero-extensions.mjs",
+      "default": "./fesm2022/ng-matero-extensions.mjs"
+    },
+    "./prebuilt-themes/indigo-pink.css": {
+      "style": "./prebuilt-themes/indigo-pink.css"
+    },
+    "./prebuilt-themes/deeppurple-amber.css": {
+      "style": "./prebuilt-themes/deeppurple-amber.css"
+    },
+    "./prebuilt-themes/pink-bluegrey.css": {
+      "style": "./prebuilt-themes/pink-bluegrey.css"
+    },
+    "./prebuilt-themes/purple-green.css": {
+      "style": "./prebuilt-themes/purple-green.css"
+    },
+    "./prebuilt-themes/*": {
+      "style": "./prebuilt-themes/*.css"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    },
+    "./alert": {
+      "types": "./alert/index.d.ts",
+      "esm2022": "./esm2022/alert/mtxAlert.mjs",
+      "esm": "./esm2022/alert/mtxAlert.mjs",
+      "default": "./fesm2022/mtxAlert.mjs"
+    },
+    "./button": {
+      "types": "./button/index.d.ts",
+      "esm2022": "./esm2022/button/mtxButton.mjs",
+      "esm": "./esm2022/button/mtxButton.mjs",
+      "default": "./fesm2022/mtxButton.mjs"
+    },
+    "./checkbox-group": {
+      "types": "./checkbox-group/index.d.ts",
+      "esm2022": "./esm2022/checkbox-group/mtxCheckboxGroup.mjs",
+      "esm": "./esm2022/checkbox-group/mtxCheckboxGroup.mjs",
+      "default": "./fesm2022/mtxCheckboxGroup.mjs"
+    },
+    "./colorpicker": {
+      "types": "./colorpicker/index.d.ts",
+      "esm2022": "./esm2022/colorpicker/mtxColorpicker.mjs",
+      "esm": "./esm2022/colorpicker/mtxColorpicker.mjs",
+      "default": "./fesm2022/mtxColorpicker.mjs"
+    },
+    "./column-resize": {
+      "types": "./column-resize/index.d.ts",
+      "esm2022": "./esm2022/column-resize/mtxColumnResize.mjs",
+      "esm": "./esm2022/column-resize/mtxColumnResize.mjs",
+      "default": "./fesm2022/mtxColumnResize.mjs"
+    },
+    "./core": {
+      "types": "./core/index.d.ts",
+      "esm2022": "./esm2022/core/mtxCore.mjs",
+      "esm": "./esm2022/core/mtxCore.mjs",
+      "default": "./fesm2022/mtxCore.mjs"
+    },
+    "./dialog": {
+      "types": "./dialog/index.d.ts",
+      "esm2022": "./esm2022/dialog/mtxDialog.mjs",
+      "esm": "./esm2022/dialog/mtxDialog.mjs",
+      "default": "./fesm2022/mtxDialog.mjs"
+    },
+    "./datetimepicker": {
+      "types": "./datetimepicker/index.d.ts",
+      "esm2022": "./esm2022/datetimepicker/mtxDatetimepicker.mjs",
+      "esm": "./esm2022/datetimepicker/mtxDatetimepicker.mjs",
+      "default": "./fesm2022/mtxDatetimepicker.mjs"
+    },
+    "./drawer": {
+      "types": "./drawer/index.d.ts",
+      "esm2022": "./esm2022/drawer/mtxDrawer.mjs",
+      "esm": "./esm2022/drawer/mtxDrawer.mjs",
+      "default": "./fesm2022/mtxDrawer.mjs"
+    },
+    "./grid": {
+      "types": "./grid/index.d.ts",
+      "esm2022": "./esm2022/grid/mtxGrid.mjs",
+      "esm": "./esm2022/grid/mtxGrid.mjs",
+      "default": "./fesm2022/mtxGrid.mjs"
+    },
+    "./loader": {
+      "types": "./loader/index.d.ts",
+      "esm2022": "./esm2022/loader/mtxLoader.mjs",
+      "esm": "./esm2022/loader/mtxLoader.mjs",
+      "default": "./fesm2022/mtxLoader.mjs"
+    },
+    "./photoviewer": {
+      "types": "./photoviewer/index.d.ts",
+      "esm2022": "./esm2022/photoviewer/mtxPhotoviewer.mjs",
+      "esm": "./esm2022/photoviewer/mtxPhotoviewer.mjs",
+      "default": "./fesm2022/mtxPhotoviewer.mjs"
+    },
+    "./popover": {
+      "types": "./popover/index.d.ts",
+      "esm2022": "./esm2022/popover/mtxPopover.mjs",
+      "esm": "./esm2022/popover/mtxPopover.mjs",
+      "default": "./fesm2022/mtxPopover.mjs"
+    },
+    "./progress": {
+      "types": "./progress/index.d.ts",
+      "esm2022": "./esm2022/progress/mtxProgress.mjs",
+      "esm": "./esm2022/progress/mtxProgress.mjs",
+      "default": "./fesm2022/mtxProgress.mjs"
+    },
+    "./select": {
+      "types": "./select/index.d.ts",
+      "esm2022": "./esm2022/select/mtxSelect.mjs",
+      "esm": "./esm2022/select/mtxSelect.mjs",
+      "default": "./fesm2022/mtxSelect.mjs"
+    },
+    "./split": {
+      "types": "./split/index.d.ts",
+      "esm2022": "./esm2022/split/mtxSplit.mjs",
+      "esm": "./esm2022/split/mtxSplit.mjs",
+      "default": "./fesm2022/mtxSplit.mjs"
+    },
+    "./tooltip": {
+      "types": "./tooltip/index.d.ts",
+      "esm2022": "./esm2022/tooltip/mtxTooltip.mjs",
+      "esm": "./esm2022/tooltip/mtxTooltip.mjs",
+      "default": "./fesm2022/mtxTooltip.mjs"
+    }
+  },
   "dependencies": {
-    "@angular/animations": "^18.0.1",
-    "@angular/cdk": "^18.0.1",
-    "@angular/common": "^18.0.1",
-    "@angular/compiler": "^18.0.1",
-    "@angular/core": "^18.0.1",
-    "@angular/forms": "^18.0.1",
-    "@angular/material": "^18.0.1",
-    "@angular/material-experimental": "^18.0.1",
-    "@angular/material-date-fns-adapter": "^18.0.1",
-    "@angular/material-luxon-adapter": "^18.0.1",
-    "@angular/material-moment-adapter": "^18.0.1",
-    "@angular/platform-browser": "^18.0.1",
-    "@angular/platform-browser-dynamic": "^18.0.1",
-    "@angular/router": "^18.0.1",
-    "@ng-select/ng-select": "^13.2.0",
-    "@ngx-translate/core": "^15.0.0",
-    "@ngx-translate/http-loader": "^8.0.0",
-    "date-fns": "^3.6.0",
-    "luxon": "^3.4.0",
-    "moment": "^2.30.0",
+    "@ng-select/ng-select": "^13.0.0",
     "ngx-color": "^9.0.0",
-    "ngx-progressbar": "^11.1.0",
-    "photoviewer": "^3.10.1",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.6.0",
-    "zone.js": "~0.14.6"
+    "photoviewer": "^3.10.0",
+    "tslib": "^2.4.0"
   },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^18.0.2",
-    "@angular-eslint/builder": "^18.0.1",
-    "@angular-eslint/eslint-plugin": "^18.0.1",
-    "@angular-eslint/eslint-plugin-template": "^18.0.1",
-    "@angular-eslint/schematics": "^18.0.1",
-    "@angular-eslint/template-parser": "^18.0.1",
-    "@angular/cli": "^18.0.2",
-    "@angular/compiler-cli": "^18.0.1",
-    "@commitlint/cli": "^19.3.0",
-    "@commitlint/config-conventional": "^19.2.0",
-    "@types/jasmine": "~4.3.0",
-    "@types/jasminewd2": "~2.0.10",
-    "@types/luxon": "^3.4.0",
-    "@types/node": "^20.13.0",
-    "@typescript-eslint/eslint-plugin": "^7.11.0",
-    "@typescript-eslint/parser": "^7.11.0",
-    "angular-cli-ghpages": "^2.0.0",
-    "eslint": "^8.57.0",
-    "highlight-loader": "^0.7.4",
-    "highlight.js": "^11.9.0",
-    "husky": "^8.0.3",
-    "jasmine-core": "~4.5.0",
-    "jasmine-spec-reporter": "~7.0.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "lint-staged": "^15.2.0",
-    "markdown-loader": "^8.0.0",
-    "ng-packagr": "^18.0.0",
-    "prettier": "^3.3.0",
-    "protractor": "~7.0.0",
-    "raw-loader": "^4.0.2",
-    "stylelint": "^16.6.0",
-    "stylelint-config-recommended-scss": "^14.0.0",
-    "stylelint-config-standard": "^36.0.0",
-    "ts-node": "~10.9.0",
-    "typescript": "~5.4.2"
-  }
+  "peerDependencies": {
+    "@angular/animations": ">=18.0.0",
+    "@angular/cdk": ">=18.0.0",
+    "@angular/common": ">=18.0.0",
+    "@angular/core": ">=18.0.0",
+    "@angular/material": ">=18.0.0"
+  },
+  "sideEffects": false,
+  "module": "fesm2022/ng-matero-extensions.mjs",
+  "typings": "index.d.ts"
 }
